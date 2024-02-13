@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 'go-server'
+  name: 'go-app'
 spec:
   destination:
     name: 'in-cluster'
-    namespace: 'prod'
+    namespace: 'default'
   source:
     path: 'chart'
-    repoURL: 'https://github.com/RinkiyaKeDad/gitops-sample'
+    repoURL: 'https://github.com/devopshint/gitops-workflow-deploy-goapp-minikube-using-argocd'
     targetRevision: HEAD
     helm:
       valueFiles:
@@ -16,4 +16,4 @@ spec:
   project: 'default'
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false
